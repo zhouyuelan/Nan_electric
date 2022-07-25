@@ -1,0 +1,19 @@
+# top-most EditorConfig file
+root = true
+
+# Unix-style newlines with a newline ending every file
+[*]
+end_of_line = lf
+insert_final_newline = true
+charset = utf-8
+indent_style = tab
+quote_type = double
+
+# 忽略指定目录, unset的作用是删除该属性的效果
+[{/node_modules/**, /build/**, /dist/**, *-lock.json }]
+charset = unset
+end_of_line = unset
+insert_final_newline = unset
+trim_trailing_whitespace = unset
+indent_style = unset
+indent_size = unset
