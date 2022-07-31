@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { watch, ref, reactive } from "vue";
+import { watch, reactive } from "vue";
 import { useRoute, useRouter, RouteRecordName } from "vue-router";
 
 const route = useRoute();
@@ -8,7 +8,7 @@ const RouterName = reactive<{ name: RouteRecordName, path: String }>({
 	name: "",
 	path: ""
 });
-watch(route, (newRouter, oldRouter) => {
+watch(route, (newRouter) => {
 	RouterName.name = newRouter.name;
 	RouterName.path = newRouter.fullPath;
 });

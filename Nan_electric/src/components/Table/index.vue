@@ -1,17 +1,30 @@
 <script setup lang="ts">
 import { ref } from "vue";
 
-let current = ref(1);
+const current = ref<Number>(1);
+const pageSizes: Array<Number> = [10, 20, 30, 40];
+const pageSize = ref<Number>(pageSizes[0]);
 const props = defineProps<{
 	title?: String
 	data: []
 	column: { lable: String, name: String, [key: string]: any }[]
-	rightActions: {}[]
+	rightActions?: {}[]
 }>();
-const handleSizeChange = () => {
+/**
+ *Author: Moki
+ *Date: 2022-211-17
+ *Todo: 切换每页条数
+ **/
+const handleSizeChange = (size): void => {
+	pageSize.value = size;
 };
-const handleCurrentChange = (current) => {
-	current.value = current;
+/**
+ *Author: Moki
+ *Date: 2022-211-17
+ *Todo: 分页
+ **/
+const handleCurrentChange = (currentValue): void => {
+	current.value = currentValue;
 };
 
 console.log(props.column);
@@ -25,7 +38,9 @@ console.log(props.column);
 			<slot name="addBtn"></slot>
 		</div>
 		<div class="tableContainer" style="width: 100%; height: calc(100% - 120px)">
-			<el-table :data="data" border style="width: 100%; height: calc(100% - 10px)">
+			<el-table
+				:data="data.slice((current-1)*pageSize,current*pageSize)" border
+				style="width: 100%; height: calc(100% - 10px)">
 				<el-table-column
 					v-for="(item, index) in column"
 					:key="index"
@@ -35,7 +50,7 @@ console.log(props.column);
 					:min-width="item.minWidth"
 					:fixed="item.fixed"
 				>
-
+					
 					<template
 						v-for="(btnSlot, index) in item.scopedSlots"
 						v-if="item.prop === 'actions'"
@@ -49,10 +64,11 @@ console.log(props.column);
 			</el-table>
 		</div>
 		<el-pagination
+			v-model:current-page="current"
 			class="paginationClass"
-			:current-page="current"
-			page-size="pageSize2"
-			page-sizes="[10, 20, 30, 40]"
+			small
+			:page-size="pageSize"
+			:page-sizes="[10, 20, 30, 40]"
 			background
 			layout="sizes, prev, pager, next"
 			:total="data.length"
