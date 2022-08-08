@@ -117,6 +117,24 @@ export const asyncRoutes = [
           icon: 'test-tube-line',
         },
       },
+      {
+        path: 'teamClass',
+        name: 'Team Class',
+        component: () => import('@/views/teamClass'),
+        meta: {
+          title: '班务管理系统',
+          icon: 'test-tube-line',
+        },
+      },
+      {
+        path: 'BugManager',
+        name: 'Bug Manager',
+        component: () => import('@/views/bugManager'),
+        meta: {
+          title: '漏洞管理',
+          icon: 'test-tube-line',
+        },
+      },
     ],
   },
   {

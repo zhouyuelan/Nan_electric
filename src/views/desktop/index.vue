@@ -3,6 +3,17 @@
 
   const form = reactive({})
   const ruleFormRef = ref()
+  const options = [
+	  {value: "备份数据"},
+	  {value: "IE安装"},
+	  {value: "输入法"},
+	  {value: "备份数据"},
+	  {value: "打印机安装"},
+	  {value: "重装系统"},
+	  {value: "软视频维护"},
+	  {value: "OFFICE"},
+	  {value: "扫描仪安装"},
+  ]
 </script>
 
 <template>
@@ -34,33 +45,22 @@
           placeholder="请输入"
         />
       </a-form-item>
-	    <a-form-item label="故障情况">
-		    <a-textarea
-			    :autosize="{ minRows: 3, maxRows: 4 }"
-			    placeholder="请输入"
-		    />
+	    <a-form-item label="维修内容">
+		    <a-select
+			    mode="tags"
+			    style="width: 100%"
+			    placeholder="请选择"
+			    :options="options"
+		    ></a-select>
 	    </a-form-item>
-      <a-form-item label="领用部门">
+      <a-form-item label="完成时间">
         <a-input placeholder="请输入" />
       </a-form-item>
-      <a-form-item label="领用人姓名">
+      <a-form-item label="服务态度">
         <a-input placeholder="请输入" />
       </a-form-item>
-      <a-form-item label="联系电话">
+      <a-form-item label="工作质量">
         <a-input placeholder="请输入" />
-      </a-form-item>
-      <a-form-item label="经手人">
-        <a-input placeholder="请输入" />
-      </a-form-item>
-      <a-form-item label="时间">
-        <a-input placeholder="请输入" />
-      </a-form-item>
-      <a-form-item label="备注">
-        <a-input
-          type="textarea"
-          :autosize="{ minRows: 4, maxRows: 4 }"
-          placeholder="请输入"
-        />
       </a-form-item>
       <a-form-item>
         <div style="display: flex; justify-content: end">
