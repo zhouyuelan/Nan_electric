@@ -22,4 +22,5 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
-./南充电力/node_modules
+./Nan_electric/node_modules
+./vue-admin/node_modules
